@@ -34,5 +34,6 @@ services:
     restart: always
     env_file: .env
     volumes:
+      - taski_static:/staticfiles
     ports:
       - 8000:80
