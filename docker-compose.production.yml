@@ -1,39 +1,39 @@
 volumes:
-  pg_data:
-    name: pg_data
+  taski_pg_data:
+    name: taski_pg_data
   static:
-    name: static
+    taski_static: taski_static
 
 services:
   db:
     image: postgres:13
-    container_name: db
+    container_name: taski_db
     restart: always
     env_file: .env
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - taski_pg_data:/var/lib/postgresql/data
   backend:
     image: 4y3t98y4/taski_backend
-    container_name: backend
+    container_name: taski_backend
     restart: always
     env_file: .env
     volumes:
-      - static:/backend_static
+      - taski_static:/backend_static
 
   frontend:
     image: 4y3t98y4/taski_frontend
-    container_name: frontend
+    container_name: taski_frontend
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static:/frontend_static
+      - taski_static:/frontend_static
 
   gateway:
     image: 4y3t98y4/taski_gateway
-    container_name: gateway
+    container_name: taski_gateway
     restart: always
     env_file: .env
     volumes:
-      - static:/staticfiles
+      - taski_static:/staticfiles
     ports:
       - 8000:80
