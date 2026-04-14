@@ -1,4 +1,4 @@
-        uname: Main Taski workflow
+name: Main Taski workflow
 
 on:
   push:
@@ -122,8 +122,4 @@ jobs:
         with:
           context: ./gateway/
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/taski_gateway:latest ses: docker/build-push-action@v4
-        with:
-          context: ./frontend/
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/taski_frontend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/taski_gateway:latest 
