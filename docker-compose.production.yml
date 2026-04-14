@@ -1,7 +1,7 @@
 volumes:
   taski_pg_data:
     name: taski_pg_data
-  static:
+  taski_static:
     name: taski_static
 
 services:
@@ -12,6 +12,7 @@ services:
     env_file: .env
     volumes:
       - taski_pg_data:/var/lib/postgresql/data
+
   backend:
     image: 4y3t98y4/taski_backend
     container_name: taski_backend
